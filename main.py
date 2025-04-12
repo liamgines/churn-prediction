@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
+import seaborn as sns
 
 DATA_FILE_NAME = "Churn_Modelling.csv"
 TARGET_COLUMN_NAME = "Exited"
@@ -23,17 +24,11 @@ def box_plot_frame(data_frame):
     plt.xticks(rotation=60)
     plt.show()
 
-def correlation_plot_frame(data_frame, feature_names):
+def correlation_plot_frame(data_frame):
     correlation_matrix = data_frame.corr()
-    figure = plt.figure()
-    axes = figure.add_subplot(111)
-    axes_image = axes.matshow(correlation_matrix, interpolation="nearest")
-    figure.colorbar(axes_image)
-    axes.set_xticks([i for i in range(len(feature_names))])
-    axes.set_yticks([i for i in range(len(feature_names))])
-    axes.set_xticklabels(feature_names)
-    axes.set_yticklabels(feature_names)
-    plt.xticks(rotation=90)
+    plt.figure(figsize=(10,8))
+    sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")
+    plt.title("Correlation Matrix")
     plt.show()
 
 def main():
@@ -56,7 +51,7 @@ def main():
 
     box_plot_frame(data_frame)
     
-    correlation_plot_frame(data_frame, feature_names)
+    correlation_plot_frame(data_frame)
 
     x = data_frame.drop(columns=[TARGET_COLUMN_NAME])
     y = data_frame[TARGET_COLUMN_NAME]
