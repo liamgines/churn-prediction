@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import LabelEncoder
+
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
@@ -10,21 +11,16 @@ CSV_FILE = "Churn_Modelling.csv"
 TARGET = "Exited"
 UNNECESSARY_FEATURES = ["RowNumber", "CustomerId", "Surname"]
 NOMINAL_FEATURES = ["Surname", "Geography", "Gender"]
+SELECTED_NOMINAL_FEATURES = list(set(NOMINAL_FEATURES) - set(UNNECESSARY_FEATURES))
 RANDOM_STATE = 42
 
 data_frame = pd.read_csv(CSV_FILE)
 
-label_encoder = LabelEncoder()
-for nominal_feature in NOMINAL_FEATURES:
-    if nominal_feature in UNNECESSARY_FEATURES:
-        pass
-
-    else:
-        current_feature_values = data_frame[nominal_feature]
-        label_encoder.fit(current_feature_values)
-        data_frame[nominal_feature] = label_encoder.transform(current_feature_values)
+data_frame = pd.get_dummies(data_frame, columns=SELECTED_NOMINAL_FEATURES)
+data_frame
 
 data_frame = data_frame.drop(columns=UNNECESSARY_FEATURES)
+# print(data_frame.describe())
 
 data_frame.plot(kind="box")
 plt.xticks(rotation=90)
