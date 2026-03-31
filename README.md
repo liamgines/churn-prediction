@@ -12,7 +12,7 @@ Installation
 --------
 First, ensure you have Python 3 installed.
 
-Then:
+Then, run the following commands:
 ```
 git clone <repository_url>
 cd churn-prediction
