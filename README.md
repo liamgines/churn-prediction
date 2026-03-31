@@ -10,6 +10,9 @@ The dataset used is highly imbalanced and contains information about a bank's cu
 
 Installation
 --------
+First, ensure you have Python 3 installed.
+
+Then:
 ```
 git clone <repository_url>
 cd churn-prediction
@@ -20,7 +23,7 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-Then find where it says `copy and paste one of these URLs` in Command Prompt and open one of them in a browser.
+Next, find where it says `Or copy and paste one of these URLs:` in Command Prompt and open one of them in a browser.
 
 The URL that you open should look like `http://localhost:{port}/tree?token={token}` or `http://127.0.0.1:{port}/tree?token={token}`.
 
