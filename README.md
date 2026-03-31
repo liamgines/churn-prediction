@@ -25,6 +25,6 @@ jupyter notebook
 
 Next, find where it says `Or copy and paste one of these URLs:` in Command Prompt and open one of them in a browser.
 
-The URL that you open should look like `http://localhost:{port}/tree?token={token}` or `http://127.0.0.1:{port}/tree?token={token}`.
+The URL that you open should be formatted like `http://localhost:{port}/tree?token={token}` or `http://127.0.0.1:{port}/tree?token={token}`.
 
 Once you've opened the URL in a browser, you should be able to click the `.ipynb` file to open the notebook and run the code from there.
